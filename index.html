@@ -4,10 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Widget Initialization</title> 
-    <link rel="stylesheet" type="text/css" href="https://farmers--efnolsit1.sandbox.my.salesforce-sites.com/LiveAgent/resource/EmbeddedChat/css/Farmers_EmbeddedChat_Style.css?version=1.1"/>
 </head>
 <body>
-    <script src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
-    <script src="https://farmers--efnolsit1.sandbox.my.salesforce-sites.com/LiveAgent/resource/EmbeddedChat/scripts/Farmers_EmbeddedChat_Init.js"></script>
+    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+    <script>
+        if (!window.embedded_svc) {
+            var s = document.createElement('script');
+            s.setAttribute('src',  'https://farmers--efnolsit1.sandbox.my.salesforce.com' + '/embeddedservice/5.0/esw.min.js');
+            s.onload = function() {
+                initESW(null);
+            };
+            document.body.appendChild(s);
+        } else
+        {
+            var dateNum = new Date().getTime();
+           
+            var sandboxInfo = "{!JSENCODE(liveAgentURL)}";
+          //  change url based on salesforce sandbox/prod
+            var region = sandboxInfo.match("efnolsit1") ? "QA" : "PROD";
+            console.log('region '+ region);
+            var cssResourceUrl = "{!JSENCODE(liveAgentURL)}" + '/resource/EmbeddedChat/'+ region +'/EmbeddedChat.css'+ '?cacheparam=' + dateNum;
+           
+            console.log(' cssResourceUrl : '+cssResourceUrl );
+            var stylecss = document.createElement('link');
+            stylecss.setAttribute('rel',"stylesheet");
+            stylecss.setAttribute('href',cssResourceUrl);
+            document.body.appendChild(stylecss);
+           
+            var jsResourceUrl =  "{!JSENCODE(liveAgentURL)}" + '/resource/EmbeddedChat/'+ region +'/EmbeddedChat.js'+ '?cacheparam=' + dateNum;
+            console.log(' cssResourceUrl : '+jsResourceUrl );
+            var s = document.createElement('script');
+            s.setAttribute('src', jsResourceUrl);
+           
+            s.onload = function() {
+              //  var cssObj = {
+            /   "FirstName" : "Melinda",
+            //   "LastName" : "Sanchez",
+            //   "Otherparameter" : "189178196",
+           //     ........ add as required
+           // }
+ 
+                console.log('Object '+JSON.stringify(cssObj ));
+                initESW('https://service.force.com',cssObj);
+            };
+            document.body.appendChild(s);
+        }
+    </script>
 </body>
 </html>
