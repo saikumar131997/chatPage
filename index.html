@@ -18,7 +18,7 @@
         } else
         {
             var dateNum = new Date().getTime();
-           
+            var liveAgentURL = 'https://farmers--efnolsit1.sandbox.my.salesforce-sites.com/LiveAgent';
             var sandboxInfo = "{!JSENCODE(liveAgentURL)}";
           //  change url based on salesforce sandbox/prod
             var region = sandboxInfo.match("efnolsit1") ? "QA" : "PROD";
