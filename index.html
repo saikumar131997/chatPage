@@ -1,75 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Widget Initialization</title> 
-</head>
-<body>
-    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
-    <script>
-        if (!window.embedded_svc) {
-            var s = document.createElement('script');
-            s.setAttribute('src',  'https://farmers--efnolsit1.sandbox.my.salesforce.com' + '/embeddedservice/5.0/esw.min.js');
-            s.onload = function() {
-                initESW(null);
-            };
-            document.body.appendChild(s);
-        } else
-        {
-            var dateNum = new Date().getTime();
-            var liveAgentURL = 'https://farmers--efnolsit1.sandbox.my.salesforce-sites.com/LiveAgent';
-            console.log('liveAgentURL '+ liveAgentURL);
-            var cssResourceUrl = liveAgentURL + '/resource/EmbeddedChat/css/Farmers_EmbeddedChat_Style.css'+ '?cacheparam=' + dateNum;
+< !DOCTYPE html >
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Chat Widget Initialization</title>
+                </head>
+                <body>
+                    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+                    <script>
+                        if (!window.embedded_svc) {
+                         var s = document.createElement('script');
+                        s.setAttribute('src',  'https://farmers--efnolsit1.sandbox.my.salesforce.com' + '/embeddedservice/5.0/esw.min.js');
+                        s.onload = function() {
+                            initESW(null);
+                        };
+                        document.body.appendChild(s);
+                        } else {
+                        var dateNum = new Date().getTime();
+                        var liveAgentURL = 'https://farmers--efnolsit1.sandbox.my.salesforce-sites.com/LiveAgent';
+                        console.log('liveAgentURL '+ liveAgentURL);
+                        var cssResourceUrl = liveAgentURL + '/resource/EmbeddedChat/css/Farmers_EmbeddedChat_Style.css'+ '?cacheparam=' + dateNum;
 
-            console.log(' cssResourceUrl : '+cssResourceUrl );
-            var stylecss = document.createElement('link');
-            stylecss.setAttribute('rel',"stylesheet");
-            stylecss.setAttribute('href',cssResourceUrl);
-            document.body.appendChild(stylecss);
-           
-            var jsResourceUrl =  liveAgentURL + '/resource/EmbeddedChat/scripts/Farmers_EmbeddedChat_Init.js'+ '?cacheparam=' + dateNum;
-            console.log(' jsResourceUrl : '+jsResourceUrl );
-            var s = document.createElement('script');
-            s.setAttribute('src', jsResourceUrl);
-           
-            s.onload = function() {
-              //  var cssObj = {
-            //   "FirstName" : "Melinda",
-            //   "LastName" : "Sanchez",
-            //   "Otherparameter" : "189178196",
-           //     ........ add as required
-           // }
-                 callSalesforceBackend();
-               // console.log('Object '+JSON.stringify(cssObj ));
-              //  initESW('https://service.force.com',cssObj);
-                 initESW('https://service.force.com');
-            };
-            document.body.appendChild(s);
-        }
+                        console.log(' cssResourceUrl : '+cssResourceUrl );
+                        var stylecss = document.createElement('link');
+                        stylecss.setAttribute('rel',"stylesheet");
+                        stylecss.setAttribute('href',cssResourceUrl);
+                        document.body.appendChild(stylecss);
 
-                // JavaScript function to call Salesforce backend
-        function callSalesforceBackend() {
-            fetch('https://farmers--efnolsit1.sandbox.my.salesforce.com/services/apexrest/ChatController', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Error calling Apex code');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Apex code executed successfully');
-                console.log(data);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-        }
-    </script>
-</body>
-</html>
+                        var jsResourceUrl =  liveAgentURL + '/resource/EmbeddedChat/scripts/Farmers_EmbeddedChat_Init.js'+ '?cacheparam=' + dateNum;
+                        console.log(' jsResourceUrl : '+jsResourceUrl );
+                        var s = document.createElement('script');
+                        s.setAttribute('src', jsResourceUrl);
+
+                        s.onload = function() {
+                            initESW('https://service.force.com');
+                        };
+                        document.body.appendChild(s);
+                      }
+                    </script>
+                </body>
+            </html>
