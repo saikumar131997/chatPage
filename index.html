@@ -20,7 +20,7 @@
             var dateNum = new Date().getTime();
             var liveAgentURL = 'https://farmers--efnolsit1.sandbox.my.salesforce-sites.com/LiveAgent';
             console.log('liveAgentURL '+ liveAgentURL);
-            var cssResourceUrl = liveAgentURL + '/resource/EmbeddedChat/css/EmbeddedChat.css'+ '?cacheparam=' + dateNum;
+            var cssResourceUrl = liveAgentURL + '/resource/EmbeddedChat/css/Farmers_EmbeddedChat_Style.css'+ '?cacheparam=' + dateNum;
 
             console.log(' cssResourceUrl : '+cssResourceUrl );
             var stylecss = document.createElement('link');
@@ -28,7 +28,7 @@
             stylecss.setAttribute('href',cssResourceUrl);
             document.body.appendChild(stylecss);
            
-            var jsResourceUrl =  liveAgentURL + '/resource/EmbeddedChat/scripts/EmbeddedChat.js'+ '?cacheparam=' + dateNum;
+            var jsResourceUrl =  liveAgentURL + '/resource/EmbeddedChat/scripts/Farmers_EmbeddedChat_Init.js'+ '?cacheparam=' + dateNum;
             console.log(' jsResourceUrl : '+jsResourceUrl );
             var s = document.createElement('script');
             s.setAttribute('src', jsResourceUrl);
