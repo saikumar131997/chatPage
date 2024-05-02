@@ -19,20 +19,17 @@
         {
             var dateNum = new Date().getTime();
             var liveAgentURL = 'https://farmers--efnolsit1.sandbox.my.salesforce-sites.com/LiveAgent';
-            var sandboxInfo = "{!JSENCODE(liveAgentURL)}";
-          //  change url based on salesforce sandbox/prod
-            var region = sandboxInfo.match("efnolsit1") ? "QA" : "PROD";
-            console.log('region '+ region);
-            var cssResourceUrl = "{!JSENCODE(liveAgentURL)}" + '/resource/EmbeddedChat/'+ region +'/EmbeddedChat.css'+ '?cacheparam=' + dateNum;
-           
+            console.log('liveAgentURL '+ liveAgentURL);
+            var cssResourceUrl = liveAgentURL + '/resource/EmbeddedChat/css' +'/EmbeddedChat.css'+ '?cacheparam=' + dateNum;
+
             console.log(' cssResourceUrl : '+cssResourceUrl );
             var stylecss = document.createElement('link');
             stylecss.setAttribute('rel',"stylesheet");
             stylecss.setAttribute('href',cssResourceUrl);
             document.body.appendChild(stylecss);
            
-            var jsResourceUrl =  "{!JSENCODE(liveAgentURL)}" + '/resource/EmbeddedChat/'+ region +'/EmbeddedChat.js'+ '?cacheparam=' + dateNum;
-            console.log(' cssResourceUrl : '+jsResourceUrl );
+            var jsResourceUrl =  liveAgentURL + '/resource/EmbeddedChat/scripts'+ region +'/EmbeddedChat.js'+ '?cacheparam=' + dateNum;
+            console.log(' jsResourceUrl : '+jsResourceUrl );
             var s = document.createElement('script');
             s.setAttribute('src', jsResourceUrl);
            
@@ -44,8 +41,9 @@
            //     ........ add as required
            // }
  
-                console.log('Object '+JSON.stringify(cssObj ));
-                initESW('https://service.force.com',cssObj);
+               // console.log('Object '+JSON.stringify(cssObj ));
+              //  initESW('https://service.force.com',cssObj);
+                 initESW('https://service.force.com');
             };
             document.body.appendChild(s);
         }
