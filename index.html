@@ -40,12 +40,36 @@
             //   "Otherparameter" : "189178196",
            //     ........ add as required
            // }
- 
+                 callSalesforceBackend();
                // console.log('Object '+JSON.stringify(cssObj ));
               //  initESW('https://service.force.com',cssObj);
                  initESW('https://service.force.com');
             };
             document.body.appendChild(s);
+        }
+
+                // JavaScript function to call Salesforce backend
+        function callSalesforceBackend() {
+            fetch('/services/apexrest/ChatController/handleChatInit', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer <your_access_token>'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error calling Apex code');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Apex code executed successfully');
+                console.log(data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
         }
     </script>
 </body>
