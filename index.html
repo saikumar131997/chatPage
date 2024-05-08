@@ -10,7 +10,7 @@
                     <script>
                         if (!window.embedded_svc) {
                          var s = document.createElement('script');
-                        s.setAttribute('src',  'https://farmers--uat3.sandbox.my.salesforce.com' + '/embeddedservice/5.0/esw.min.js');
+                        s.setAttribute('src',  'https://farmers--uat3.sandbox.my.salesforce-sites.com' + '/embeddedservice/5.0/esw.min.js');
                         s.onload = function() {
                             initESW(null);
                         };
@@ -37,7 +37,7 @@
                         };
                         document.body.appendChild(s);
 
-                        var fontResourceUrl1 = liveAgentURL + '/resource/EmbeddedChat/fontFiles/farmers-web-fonts/OpenSans-Bold.ttf+ ' ? cacheparam = ' + dateNum;
+                        var fontResourceUrl1 = liveAgentURL + '/resource/EmbeddedChat/fontFiles/farmers-web-fonts/OpenSans-Bold.ttf' + '?cacheparam=' + dateNum;
  
                         console.log('fontResourceUrl1 : ' + fontResourceUrl1);
                         var stylecss1 = document.createElement('link');
@@ -48,7 +48,7 @@
                         stylecss1.setAttribute('crossorigin', "anonymous");
                         document.body.appendChild(stylecss1);
                          
-                        var fontResourceUrl2 = liveAgentURL + '/resource/EmbeddedChat/fontFiles/farmers-web-fonts/OpenSans-SemiBold.ttf+ ' ? cacheparam = ' + dateNum;
+                        var fontResourceUrl2 = liveAgentURL + '/resource/EmbeddedChat/fontFiles/farmers-web-fonts/OpenSans-SemiBold.ttf'+ '?cacheparam=' + dateNum;
                          
                         console.log('fontResourceUrl2 : ' + fontResourceUrl2);
                         var fontStyle1 = document.createElement('link');
@@ -59,7 +59,7 @@
                         fontStyle1.setAttribute('crossorigin', "anonymous");
                         document.body.appendChild(fontStyle1);
                          
-                        var fontResourceUrl3 = liveAgentURL + '/resource/EmbeddedChat/fontFiles/farmers-web-fonts/OpenSans-Regular.ttf+ ' ? cacheparam = ' + dateNum;
+                        var fontResourceUrl3 = liveAgentURL + '/resource/EmbeddedChat/fontFiles/farmers-web-fonts/OpenSans-Regular.ttf'+'?cacheparam=' + dateNum;
                          
                         console.log('fontResourceUrl3 : ' + fontResourceUrl3);
                         var fontStyle2 = document.createElement('link');
