@@ -1,82 +1,72 @@
 <!DOCTYPE html>
-    <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Chat Widget Initialization</title>
-                </head>
-                <body>
-                    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
-                    <script>
-                        if (!window.embedded_svc) {
-                         var s = document.createElement('script');
-                        s.setAttribute('src',  'https://farmers--uat3.sandbox.my.salesforce-sites.com/embeddedservice/5.0/esw.min.js');
-                        s.onload = function() {
-                            initESW(null);
-                        };
-                        document.body.appendChild(s);
-                        } else {
-                        var dateNum = new Date().getTime();
-                        var liveAgentURL = 'https://farmers--uat3.sandbox.my.salesforce-sites.com/LiveAgent';
-                        console.log('liveAgentURL '+ liveAgentURL);
-                        var cssResourceUrl = liveAgentURL + '/resource/EmbeddedChat/css/Farmers_EmbeddedChat_Style.css'+ '?cacheparam=' + dateNum;
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Widget Initialization</title>
+</head>
+<body>
+    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js' async></script>
+    <script>
+        if (!window.embedded_svc) {
+            const s = document.createElement('script');
+            s.src = 'https://farmers--uat3.sandbox.my.salesforce-sites.com/embeddedservice/5.0/esw.min.js';
+            s.async = true;
+            s.addEventListener('load', initESW);
+            document.body.appendChild(s);
+        } else {
+            const dateNum = new Date().getTime();
+            const liveAgentURL = 'https://farmers--uat3.sandbox.my.salesforce-sites.com/LiveAgent';
+            const cssResourceUrl = `${liveAgentURL}/resource/EmbeddedChat/css/Farmers_EmbeddedChat_Style.css?cacheparam=${dateNum}`;
+            const jsResourceUrl = `${liveAgentURL}/resource/EmbeddedChat/scripts/Farmers_EmbeddedChat_Init.js?cacheparam=${dateNum}`;
+            const fontResourceUrl1 = `${liveAgentURL}/resource/EmbeddedChat/fontFiles/farmers-web-fonts/OpenSans-Bold.ttf?cacheparam=${dateNum}`;
+            const fontResourceUrl2 = `${liveAgentURL}/resource/EmbeddedChat/fontFiles/farmers-web-fonts/OpenSans-SemiBold.ttf?cacheparam=${dateNum}`;
+            const fontResourceUrl3 = `${liveAgentURL}/resource/EmbeddedChat/fontFiles/farmers-web-fonts/OpenSans-Regular.ttf?cacheparam=${dateNum}`;
+            const loadFontStyle = `${liveAgentURL}/resource/EmbeddedChat/fontFiles/farmers-web-fonts/style.css?cacheparam=${dateNum}`;
 
-                        console.log(' cssResourceUrl : '+cssResourceUrl );
-                        var stylecss = document.createElement('link');
-                        stylecss.setAttribute('rel',"stylesheet");
-                        stylecss.setAttribute('href',cssResourceUrl);
-                        document.body.appendChild(stylecss);
+            const stylecss = document.createElement('link');
+            stylecss.rel = "stylesheet";
+            stylecss.href = cssResourceUrl;
+            document.head.appendChild(stylecss);
 
-                        var jsResourceUrl =  liveAgentURL + '/resource/EmbeddedChat/scripts/Farmers_EmbeddedChat_Init.js'+ '?cacheparam=' + dateNum;
-                        console.log(' jsResourceUrl : '+jsResourceUrl );
-                        var s = document.createElement('script');
-                        s.setAttribute('src', jsResourceUrl);
+            fetch(jsResourceUrl)
+               .then(response => response.text())
+               .then(data => {
+                    const script = document.createElement('script');
+                    script.text = data;
+                    document.body.appendChild(script);
+                    initESW('https://service.force.com');
+                });
 
-                        s.onload = function() {
-                            initESW('https://service.force.com');
-                        };
-                        document.body.appendChild(s);
+            const stylecss1 = document.createElement('link');
+            stylecss1.rel = "preload";
+            stylecss1.href = fontResourceUrl1;
+            stylecss1.as = "font";
+            stylecss1.type = "font/ttf";
+            stylecss1.crossOrigin = "anonymous";
+            document.head.appendChild(stylecss1);
 
-                        let fontResourceUrl1 = liveAgentURL + '/resource/EmbeddedChat/fontFiles/farmers-web-fonts/OpenSans-Bold.ttf' + '?cacheparam=' + dateNum;
+            const stylecss2 = document.createElement('link');
+            stylecss2.rel = "preload";
+            stylecss2.href = fontResourceUrl2;
+            stylecss2.as = "font";
+            stylecss2.type = "font/ttf";
+            stylecss2.crossOrigin = "anonymous";
+            document.head.appendChild(stylecss2);
 
-                        console.log('fontResourceUrl1 : ' + fontResourceUrl1);
-                        var stylecss1 = document.createElement('link');
-                        stylecss1.setAttribute('rel', "preload");
-                        stylecss1.setAttribute('href', fontResourceUrl1);
-                        stylecss1.setAttribute('as', "font");
-                        stylecss1.setAttribute('type', "font/ttf");
-                        stylecss1.setAttribute('crossorigin', "anonymous");
-                        document.body.appendChild(stylecss1);
-                         
-                        let fontResourceUrl2 = liveAgentURL + '/resource/EmbeddedChat/fontFiles/farmers-web-fonts/OpenSans-SemiBold.ttf'+ '?cacheparam=' + dateNum;
-                         
-                        console.log('fontResourceUrl2 : ' + fontResourceUrl2);
-                        let fontStyle1 = document.createElement('link');
-                        fontStyle1.setAttribute('rel', "preload");
-                        fontStyle1.setAttribute('href', fontResourceUrl2);
-                        fontStyle1.setAttribute('as', "font");
-                        fontStyle1.setAttribute('type', "font/ttf");
-                        fontStyle1.setAttribute('crossorigin', "anonymous");
-                        document.body.appendChild(fontStyle1);
-                         
-                        let fontResourceUrl3 = liveAgentURL + '/resource/EmbeddedChat/fontFiles/farmers-web-fonts/OpenSans-Regular.ttf'+'?cacheparam=' + dateNum;
-                         
-                        console.log('fontResourceUrl3 : ' + fontResourceUrl3);
-                        let fontStyle2 = document.createElement('link');
-                        fontStyle2.setAttribute('rel', "preload");
-                        fontStyle2.setAttribute('href', fontResourceUrl3);
-                        fontStyle2.setAttribute('as', "font");
-                        fontStyle2.setAttribute('type', "font/ttf");
-                        fontStyle2.setAttribute('crossorigin', "anonymous");
-                        document.body.appendChild(fontStyle2);    
-                    
-                        let loadFontStyle  = liveAgentURL + '/resource/EmbeddedChat/fontFiles/farmers-web-fonts/style.css'+ '?cacheparam=' + dateNum;
-                        console.log(' Load font style : '+loadFontStyle );
-                        let stylecss2 = document.createElement('link');
-                        stylecss2.setAttribute('rel',"stylesheet");
-                        stylecss2.setAttribute('href',loadFontStyle);
-                        document.body.appendChild(stylecss2);    
-                      }
-                    </script>
-                </body>
-            </html>
+            const stylecss3 = document.createElement('link');
+            stylecss3.rel = "preload";
+            stylecss3.href = fontResourceUrl3;
+            stylecss3.as = "font";
+            stylecss3.type = "font/ttf";
+            stylecss3.crossOrigin = "anonymous";
+            document.head.appendChild(stylecss3);
+
+            const stylecss4 = document.createElement('link');
+            stylecss4.rel = "stylesheet";
+            stylecss4.href = loadFontStyle;
+            document.head.appendChild(stylecss4);
+        }
+    </script>
+</body>
+</html>
