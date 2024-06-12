@@ -10,14 +10,14 @@
                     <script>
                         if (!window.embedded_svc) {
                          var s = document.createElement('script');
-                        s.setAttribute('src',  'https://farmers--uat3.sandbox.my.salesforce-sites.com/embeddedservice/5.0/esw.min.js');
+                        s.setAttribute('src',  'farmers--efnolsit2.sandbox.my.salesforce-sites.com/embeddedservice/5.0/esw.min.js');
                         s.onload = function() {
                             initESW(null);
                         };
                         document.body.appendChild(s);
                         } else {
                         var dateNum = new Date().getTime();
-                        var liveAgentURL = 'https://farmers--uat3.sandbox.my.salesforce-sites.com/LiveAgent';
+                        var liveAgentURL = 'farmers--efnolsit2.sandbox.my.salesforce-sites.com/LiveAgent';
                         console.log('liveAgentURL '+ liveAgentURL);
                         var cssResourceUrl = liveAgentURL + '/resource/EmbeddedChat/css/Farmers_EmbeddedChat_Style.css'+ '?cacheparam=' + dateNum;
 
