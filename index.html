@@ -10,14 +10,14 @@
       <script>
          if (!window.embedded_svc) {  
           var s = document.createElement('script');
-         s.setAttribute('src',  'https://farmers--efnolsit2.sandbox.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+         s.setAttribute('src',  'https://farmers--efnoldev2.sandbox.my.salesforce.com/embeddedservice/5.0/esw.min.js');
          s.onload = function() {
              initESW(null);
          };
          document.body.appendChild(s);
          } else {
          var dateNum = new Date().getTime();
-         var liveAgentURL = 'https://farmers--efnolsit2.sandbox.my.salesforce-sites.com/LiveAgent'; 
+         var liveAgentURL = 'https://farmers--efnoldev2.sandbox.my.salesforce-sites.com/LiveAgent'; 
          
          //URLs for the all the resource files needed for the chat widget. It includes a cache parameter to ensure fresh resources are loaded.
          var cssResourceUrl = `${liveAgentURL}/resource/EmbeddedChat/css/Farmers_EmbeddedChat_Style.css?cacheparam=${dateNum}`;
