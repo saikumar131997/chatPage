@@ -19,7 +19,7 @@
        var dateNum = new Date().getTime();
        var liveAgentURL = 'https://farmersagent--intdev.sandbox.my.site.com'; 
 	   //URLs for the all the resource files needed for the chat widget. It includes a cache parameter to ensure fresh resources are loaded.
-       var jsResourceUrl = `${liveAgentURL}/resource/Farmers_EmbeddedChat_Init.js?cacheparam=${dateNum}`;
+       var jsResourceUrl = `${liveAgentURL}/resource/Farmers_EmbeddedChat_Init?cacheparam=${dateNum}`;
 
 	   //Load chat button and prechat form css styles
 	   var stylecss = document.createElement('link');
@@ -37,6 +37,7 @@
 </script>
    </body>
 </html>
+
 
 
 
