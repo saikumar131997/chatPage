@@ -7,53 +7,34 @@
       <title>Chat Widget Initialization</title>
    </head>
    <body>
-    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+  <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script>
-
        if (!window.embedded_svc) {  
-
        var s = document.createElement('script');
-
        s.setAttribute('src',  'https://farmersagent--intdev.sandbox.my.salesforce.com/embeddedservice/5.0/esw.min.js');
-
        s.onload = function() {
-
            initESW(null);
-
        };
-
        document.body.appendChild(s);
-
        } else {		   
-
        var dateNum = new Date().getTime();
-
-       var liveAgentURL = 'https://farmersagent--intdev.sandbox.my.site.com';
-
+       var liveAgentURL = 'https://farmersagent--intdev.sandbox.my.site.com/chatsetup'; 
 	   //URLs for the all the resource files needed for the chat widget. It includes a cache parameter to ensure fresh resources are loaded.
-
        var jsResourceUrl = `${liveAgentURL}/resource/Farmers_EmbeddedChat_Init?cacheparam=${dateNum}`;
-
-
+  
        //Load JavaScript resource file needed for initializing the chat widget.
-
        var s = document.createElement('script');
-
        s.setAttribute('src', jsResourceUrl);
-
        s.onload = function() {
-
            initESW('https://service.force.com');
-
        };
-
        document.body.appendChild(s);	    
-
        }
 </script>
  
    </body>
 </html>
+
 
 
 
