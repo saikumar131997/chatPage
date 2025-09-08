@@ -12,15 +12,15 @@
 <script>
        if (!window.embedded_svc) {  
        var s = document.createElement('script');
-       s.setAttribute('src',  'https://farmersagent--fauat.sandbox.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+       s.setAttribute('src',  'https://farmersagent--intdev.sandbox.my.salesforce.com/embeddedservice/5.0/esw.min.js');
        s.onload = function() {
            initESW(null);
        };
        document.body.appendChild(s);
        } else {       
        var dateNum = new Date().getTime();
-       var liveAgentURL = 'https://farmersagent--fauat.sandbox.my.salesforce.com/chatsetup';       
-     //URLs for the all the resource files needed for the chat widget. It includes a cache parameter to ensure fresh resources are loaded.
+      var liveAgentURL = 'https://farmersagent--intdev.sandbox.my.site.com/chatsetup'; 
+      //URLs for the all the resource files needed for the chat widget. It includes a cache parameter to ensure fresh resources are loaded.
        var cssResourceUrl = `${liveAgentURL}/resource/EmbeddedChat/css/Farmers_EmbeddedChat_Style.css?cacheparam=${dateNum}`;
        var jsResourceUrl = `${liveAgentURL}/resource/EmbeddedChat/scripts/Farmers_EmbeddedChat_Init.js?cacheparam=${dateNum}`;
        var fontResourceUrl1 = `${liveAgentURL}/resource/EmbeddedChat/fontFiles/farmers-web-fonts/OpenSans-Bold.ttf?cacheparam=${dateNum}`;
@@ -73,6 +73,7 @@
  
    </body>
 </html>
+
 
 
 
