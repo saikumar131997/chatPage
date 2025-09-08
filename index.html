@@ -7,130 +7,73 @@
       <title>Chat Widget Initialization</title>
    </head>
    <body>
-     <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script>
-
        if (!window.embedded_svc) {  
-
        var s = document.createElement('script');
-
        s.setAttribute('src',  'https://farmersagent--fauat.sandbox.my.salesforce.com/embeddedservice/5.0/esw.min.js');
-
        s.onload = function() {
-
            initESW(null);
-
        };
-
        document.body.appendChild(s);
-
-       } else {		   
-
+       } else {       
        var dateNum = new Date().getTime();
-
-       var liveAgentURL = 'https://farmersagent--fauat.sandbox.my.salesforce-sites.com/chatsetup';       
-
-	   //URLs for the all the resource files needed for the chat widget. It includes a cache parameter to ensure fresh resources are loaded.
-
+       var liveAgentURL = 'https://farmersagent--fauat.sandbox.my.salesforce.com/chatsetup';       
+     //URLs for the all the resource files needed for the chat widget. It includes a cache parameter to ensure fresh resources are loaded.
        var cssResourceUrl = `${liveAgentURL}/resource/EmbeddedChat/css/Farmers_EmbeddedChat_Style.css?cacheparam=${dateNum}`;
-
        var jsResourceUrl = `${liveAgentURL}/resource/EmbeddedChat/scripts/Farmers_EmbeddedChat_Init.js?cacheparam=${dateNum}`;
-
        var fontResourceUrl1 = `${liveAgentURL}/resource/EmbeddedChat/fontFiles/farmers-web-fonts/OpenSans-Bold.ttf?cacheparam=${dateNum}`;
-
        var fontResourceUrl2 = `${liveAgentURL}/resource/EmbeddedChat/fontFiles/farmers-web-fonts/OpenSans-SemiBold.ttf?cacheparam=${dateNum}`;
-
        var fontResourceUrl3 = `${liveAgentURL}/resource/EmbeddedChat/fontFiles/farmers-web-fonts/OpenSans-Regular.ttf?cacheparam=${dateNum}`;
-
        var loadFontStyle = `${liveAgentURL}/resource/EmbeddedChat/fontFiles/farmers-web-fonts/style.css?cacheparam=${dateNum}`;
-
-	   //Load chat button and prechat form css styles
-
-	   var stylecss = document.createElement('link');
-
+     //Load chat button and prechat form css styles
+     var stylecss = document.createElement('link');
        stylecss.setAttribute('rel',"stylesheet");
-
        stylecss.setAttribute('href',cssResourceUrl);
-
        document.body.appendChild(stylecss);
-
        //Load JavaScript resource file needed for initializing the chat widget.
-
        var s = document.createElement('script');
-
        s.setAttribute('src', jsResourceUrl);
-
        s.onload = function() {
-
            initESW('https://service.force.com');
-
        };
-
        document.body.appendChild(s);
-
        //Load farmers-web-fonts OpenSans-Bold
-
        var stylecss1 = document.createElement('link');
-
        stylecss1.setAttribute('rel', "preload");
-
        stylecss1.setAttribute('href', fontResourceUrl1);
-
        stylecss1.setAttribute('as', "font");
-
        stylecss1.setAttribute('type', "font/ttf");
-
        stylecss1.setAttribute('crossorigin', "anonymous");
-
        document.body.appendChild(stylecss1);
-
        //Load farmers-web-fonts OpenSans-SemiBold
-
        let stylecss2 = document.createElement('link');
-
        stylecss2.setAttribute('rel', "preload");
-
        stylecss2.setAttribute('href', fontResourceUrl2);
-
        stylecss2.setAttribute('as', "font");
-
        stylecss2.setAttribute('type', "font/ttf");
-
        stylecss2.setAttribute('crossorigin', "anonymous");
-
        document.body.appendChild(stylecss2);
-
        //Load farmers-web-fonts OpenSans-Regular
-
        let stylecss3 = document.createElement('link');
-
        stylecss3.setAttribute('rel', "preload");
-
        stylecss3.setAttribute('href', fontResourceUrl3);
-
        stylecss3.setAttribute('as', "font");
-
        stylecss3.setAttribute('type', "font/ttf");
-
        stylecss3.setAttribute('crossorigin', "anonymous");
-
        document.body.appendChild(stylecss3);    
-
-	   //Load the CSS file that contains all font styles
-
+     //Load the CSS file that contains all font styles
        let stylecss4 = document.createElement('link');
-
        stylecss4.setAttribute('rel',"stylesheet");
-
        stylecss4.setAttribute('href',loadFontStyle);
-
        document.body.appendChild(stylecss4);    
-
        }
 </script>
  
    </body>
 </html>
+
 
 
 
